@@ -26,7 +26,7 @@ namespace InsuranceCompany.AuthorizationProviders
 
             if(user == null)
             {
-                context.SetError("Invalid_Grant", "Username and password incorrect");
+                context.SetError("Invalid_Grant", "There was an error with your login details. Please check them and try again");
                 return;
             }
 

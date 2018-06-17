@@ -8,16 +8,18 @@ angular.module("Authentication")
 
         $scope.login = function () {  
             $scope.dataLoading = true;
-            authenticationService.Login($scope.username, $scope.password, function (response, token) {
-                if (response.success) {
-                    $scope.dataLoading = false;
-                    authenticationService.SetCredentials($scope.username, token);
-                    $window.location.href = "/Home/Company";
-                }
-            },
+            authenticationService.Login($scope.username, $scope.password, 
+                function (response, token) {
+                    if (response.success) {
+                        $scope.dataLoading = false;
+                        authenticationService.SetCredentials($scope.username, token);
+                        $window.location.href = "/Home/Company";
+                    }
+                },
                 function (response) {
                     $scope.dataLoading = false;
-                    $scope.error = response.error_description;
+                    $scope.loginError = true;
+                    $scope.error = response.data.error_description;
                 });
         };
 }]);

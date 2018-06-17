@@ -6,7 +6,7 @@ angular.module("Authentication")
         var service = {};
         var grantType = "password";
         var token;
-        service.Login = function(username, password, callback) {
+        service.Login = function(username, password, callback, errorCallback) {
             var parameter = JSON.stringify({ username: username, password: password, grant_type: grantType });
             $http({
                 method: "POST",
@@ -25,6 +25,8 @@ angular.module("Authentication")
                 token = response.data.access_token;
                 response = { success: status = 200 };
                 callback(response, token);
+            }, function (response) {
+                errorCallback(response);
             });
         };
 
