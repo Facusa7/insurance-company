@@ -49,7 +49,7 @@
                     <button type="submit" ng-disabled="form.$invalid" class="btn btn-danger">Find client</button>
                 </form>
                 <br />
-                <table class="table table-striped table-hover" ng-hide="cc.client==null" border="2">
+                <table class="table table-striped table-hover" ng-hide="cc.client==null">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -100,14 +100,14 @@
             <div ng-controller="PoliciesByNameController as cc" style="margin-top:20px">
                 <div ng-show="error" class="alert alert-danger">{{cc.error}}</div>
                 <form name="form" ng-submit="cc.click()" role="form">
-                    <div class="form-group">
-                        Client Name: <input type="text" name="name" class="form-control" ng-model="cc.name" required />
+                    <div class="form-group" style="display:inline-block">
+                        <span> Client Name: </span> <input type="text" name="name" class="form-control" ng-model="cc.name" required />
                         <span ng-show="form.name.$dirty && form.name.$error.required" class="help-block">Client Name is required</span>
                     </div>
                     <button type="submit" ng-disabled="form.$invalid" class="btn btn-danger">Find Policy</button>
                 </form>
                 <br />
-                <table class="table table-striped table-hover" ng-show="cc.policies.length" border="1">
+                <table class="table table-striped table-hover" ng-show="cc.policies.length">
                     <thead>
                         <tr>
                             <th>Policy Id</th>
