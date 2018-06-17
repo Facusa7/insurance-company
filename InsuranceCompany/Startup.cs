@@ -21,8 +21,8 @@ namespace InsuranceCompany
         public void Configuration(IAppBuilder app)
         {
             MappingConfigs.SetupMappings();
-            SetupAuthorization(ref app);
-            SetupDependencies(ref app);
+            SetupAuthorization(app);
+            SetupDependencies(app);
         }
 
         public static class MappingConfigs
@@ -39,7 +39,7 @@ namespace InsuranceCompany
             }
         }
 
-        private static void SetupAuthorization(ref IAppBuilder app)
+        private static void SetupAuthorization(IAppBuilder app)
         {
             app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
             var authProvider = new AuthorizationProvider();
@@ -54,7 +54,7 @@ namespace InsuranceCompany
             app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
         }
 
-        private static void SetupDependencies(ref IAppBuilder app)
+        private static void SetupDependencies(IAppBuilder app)
         {
             var builder = new ContainerBuilder();
             var config = new HttpConfiguration();
