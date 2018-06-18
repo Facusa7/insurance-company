@@ -8,7 +8,6 @@ using System.Web.Http;
 
 namespace InsuranceCompany.Controllers
 {
-    [Authorize]
     public class CompanyController : ApiController
     {
         private readonly IClientRepository _clientRepository;
